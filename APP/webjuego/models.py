@@ -4,22 +4,27 @@ from django.db import models
 from django.contrib import admin
 
 # Create your models here.
+class Usuario(models.Model):
+	nombre=models.CharField(max_length=50)
+	gmail=models.EmailField(max_length=254)
 class Genero (models.Model):
-	nomb_genero = models.CharField(max_length=50)
+	tipo = models.CharField(max_length=50)
 class Comentario(models.Model):
-	nomb_comentario = models.CharField(max_length=50)
+	comentario = models.CharField(max_length=50)
+	usuario=models.OneToOneField(Usuario, primary_key=True,default=0)
 class Puntuacione(models.Model):
-	nomb_puntuacione=models.IntegerField(default=0)
+	valoracion=models.IntegerField(default=0)
+	usuario=models.OneToOneField(Usuario, primary_key=True)
 class Creador(models.Model):
-	nom_creador=models.CharField(max_length=50)
+	patrocinador=models.CharField(max_length=50)
 class Juego (models.Model):
 	nombre = models.CharField(max_length=50)
-	genero=models.ManyToManyField(Genero)
-	comentario=models.ForeignKey(Comentario)
-	puntuacione=models.ForeignKey(Puntuacione)
-	creador=models.ForeignKey(Creador)
-
+	genero=models.ManyToManyField(Genero,default=0)
+	comentario=models.ForeignKey(Comentario,default=0)
+	puntuacione=models.ForeignKey(Puntuacione,default=0)
+	creador=models.ForeignKey(Creador,default=0)
 	
+
 
 
 
