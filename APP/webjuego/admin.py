@@ -8,5 +8,6 @@ admin.site.register(Juego)
 admin.site.register(Puntuacione)
 admin.site.register(Creador)
 admin.site.register(Usuario)
+admin.site.register(Plataforma)
 
 
