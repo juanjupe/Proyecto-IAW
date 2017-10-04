@@ -1,6 +1,6 @@
 from django.conf.urls import url,include
 from django.contrib import admin
-
+from webjuego.views import Usuarioscreate, Usuariosupdate, Usuariosdelete
 
 from webjuego.views import *
 
@@ -11,4 +11,7 @@ urlpatterns = [
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$',Juegos.as_view()),
+    url(r'^$',Usuarioscreate.as_view()),
+    url(r'^$',Usuariosupdate.as_view()),
+    url(r'^$',Usuariosdelete.as_view()),
 ]
