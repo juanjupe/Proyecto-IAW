@@ -3,8 +3,8 @@
 {% block body %}
     <h2>VIDEOJUEGOS</h2>
     <ul>
-        {% for publisher in object_list %}
-            <li>{{ publisher.nombre }}</li>
+        {% for juego in object_list %}
+            <li>{{ juego.nombre }}</li>
         {% endfor %}
     </ul>
 {% endblock %}
