@@ -11,7 +11,7 @@ urlpatterns = [
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$',Juegos.as_view()),
-    url(r'^$',Usuarioscreate.as_view()),
-    url(r'^$',Usuariosupdate.as_view()),
-    url(r'^$',Usuariosdelete.as_view()),
+    #url(r'^$',Usuarioscreate.as_view()),
+    #url(r'^$',Usuariosupdate.as_view()),
+    #url(r'^$',Usuariosdelete.as_view()),
 ]
