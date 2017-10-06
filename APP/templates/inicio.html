@@ -4,8 +4,11 @@
     <h2>VIDEOJUEGOS</h2>
     <ul>
         {% for juego in object_list %}
-            <li>{{ juego.nombre }}</li>
+           <a href="juego_detalle/{{juego.id}}">
+           <li>{{ juego.nombre }}</li>
+           </a> 
             
         {% endfor %}
     </ul>
+    
 {% endblock %}

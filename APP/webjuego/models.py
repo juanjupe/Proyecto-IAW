@@ -15,8 +15,7 @@ class Genero (models.Model):
 	
 	def __str__(self):
 		return self.tipo
-	
-	
+
 	
 class Creador(models.Model):
 	patrocinador=models.CharField(max_length=50)
