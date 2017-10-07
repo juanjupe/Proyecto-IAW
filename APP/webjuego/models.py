@@ -7,7 +7,12 @@ from django.contrib import admin
 class Usuario(models.Model):
 	nombre=models.CharField(max_length=50)
 	gmail=models.EmailField(max_length=254)
+
+	def __str__(self):
+		return self.nombre
 	
+	def get_absolute_url(self):
+		return reverse('usuario-detail', kwargs={'pk': self.pk})	
 	
 	
 class Genero (models.Model):

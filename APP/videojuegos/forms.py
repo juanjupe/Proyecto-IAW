@@ -1,10 +1,7 @@
 from django import forms
-from webjuego.models import Usuario
 
-
+from .models import Raza,Perro,Propiedade,Usuario
 class UsuarioForm(forms.ModelForm):
 	class Meta:
 		model=Usuario
-		fields=[
-		'nombre',
-		'gmail']
+		fields=['nombre','gmail']

@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.views.generic import ListView,DetailView,CreateView, UpdateView, DeleteView
-from .models import Juego ,Usuario
+from webjuego.models import Juego ,Usuario
 
+from django.urls import reverse_lazy
 
 #from django.forms import ModelForm
 # Create your views here.
@@ -21,16 +22,31 @@ class JuegosDetail(DetailView):
 	template_name ="juego_detalle.html"
 	def __unicode__(self):
 		return self.nombre	
-class Usuarioscreate(CreateView):
-	model=Usuario
-	fields = ['nombre','gmail']
+	
+	
+		
+class UsuarioList(ListView):
+    model = Usuario
+    template_name = "usuario_list.html"
+    success_url = reverse_lazy('webjuego:list')
 
-class Usuariosupdate(UpdateView):
+class UsuarioDetail(DetailView):
+    model = Usuario
+		
+class UsuarioCreation(CreateView):
 	model=Usuario
 	fields = ['nombre','gmail']
-	
-class Usuariosdelete(DeleteView):
+	template_name ="usuario.html"
+	success_url = reverse_lazy('webjuego:list')
+	fields = ['nombre','gmail']	
+		
+class UsuarioUpdate(UpdateView):
 	model=Usuario
+	fields = ['nombre','gmail']
+	success_url = reverse_lazy('webjuego:list')
 	
+class UsuarioDelete(DeleteView):
+	model=Usuario
+	success_url = reverse_lazy('webjuego:list')
 	
 
