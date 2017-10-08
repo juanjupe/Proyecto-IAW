@@ -3,7 +3,7 @@ from django.contrib import admin
 
 from webjuego import views
 
-from webjuego.views import Juegoslista,JuegosDetail,UsuarioList,UsuarioDetail,UsuarioCreation,UsuarioUpdate,UsuarioDelete
+from webjuego.views import Juegolist,JuegoDetail,JuegoCreate,JuegoUpdate,JuegoDelete
 
 urlpatterns = [
     # Examples:
@@ -11,17 +11,9 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', admin.site.urls),
-    url(r'^$',Juegoslista.as_view(),name='pagina-principal'),
-    url(r'^juego_list/$',Juegoslista.as_view(),name='lista-de-juegos'),
-    url(r'^juego_detalle/(?P<pk>[0-9]+)/$', views.JuegosDetail.as_view(), name='detalles-juego'),
-	
-	url(r'^$', views.UsuarioList.as_view(), name='list'),
-	url(r'^(?P<pk>[0-9]+)/$', views.UsuarioDetail.as_view(), name='detail'),
-	url(r'^nuevo/(?P<pk>[0-9]+)/$', views.UsuarioCreation.as_view(), name='new'),
-	url(r'^editar/(?P<pk>[0-9]+)/$', views.UsuarioUpdate.as_view(), name='edit'),
-	url(r'^borrar/(?P<pk>[0-9]+)/$', views.UsuarioDelete.as_view(), name='delete'),
-
-    #url(r'^$',Usuarioscreate.as_view()),
-    #url(r'^$',Usuariosupdate.as_view()),
-    #url(r'^$',Usuariosdelete.as_view()),
+    url(r'^$', views.Juegolist.as_view(),name='juego_list'),
+    url(r'^juego_detalle/(?P<pk>[0-9]+)/$', views.JuegoDetail.as_view(), name='inicio_list'),
+	url(r'^juego_nuevo/(?P<pk>[0-9]+)/$', views.JuegoCreate.as_view(), name='juego_new'),
+	url(r'^juego_editar/(?P<pk>[0-9]+)/$', views.JuegoUpdate.as_view(), name='juego_edit'),
+	url(r'^juego_borrar/(?P<pk>[0-9]+)/$', views.JuegoDelete.as_view(), name='juego_delete'),
 ]

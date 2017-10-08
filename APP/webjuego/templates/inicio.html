@@ -1,22 +1,12 @@
-<head>
-	<title>VIDEOJUEGOS</title>
-</head>
-<body style="background-color:#FF0000;" >
+{% extends 'base.html' %}
 
-	{% block body %}
-	    <h2>VIDEOJUEGOS</h2>
-	    <ul>
+{% block content %}
+
+<h2>VIDEOJUEGOS</h2>
+
 	        {% for juego in object_list %}
-	           <a href="juego_detalle/{{juego.id}}">
-	           <li>{{ juego.nombre }}</li>
-	           </a> 
-	            
-	        {% endfor %}
-	    </ul>
-	    <a href="webjuego/usuario_list/{{usuario.id}}">
-	    <li>{{ usuario.nombre }}</li>
-	    </a>
-	{% endblock %}
+	           <a href="juego_detalle/{{juego.id}}"> <li>{{ juego.nombre }}</li></a> 
 
-</body>
-</html>
+	        {% endfor %}
+
+{% endblock %}

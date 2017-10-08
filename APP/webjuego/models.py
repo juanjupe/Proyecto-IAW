@@ -41,9 +41,15 @@ class Juego (models.Model):
 	genero=models.ManyToManyField(Genero,default=0)
 	creador=models.ForeignKey(Creador,default=0)
 	plataforma=models.ManyToManyField(Plataforma,default=0)
-	
+
+	def __unicode__(self):
+		return self.nombre
+		
 	def __str__(self):
 		return self.nombre
+		
+	def get_absolute_url(self):
+		return reverse('juego_edit', kwargs={'pk': self.pk})
 		
 class Comentario(models.Model):
 	comentario = models.CharField(max_length=50,primary_key=True)
