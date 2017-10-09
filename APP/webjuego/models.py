@@ -2,7 +2,10 @@ from __future__ import unicode_literals
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.contrib import admin
+<<<<<<< HEAD
 from django.contrib.auth.models import User
+=======
+>>>>>>> 1ac5c16f0466e5997e3bdbe7ca1aa7793e3a9d05
 
 # Create your models here.
 class Usuario(models.Model):
@@ -50,7 +53,11 @@ class Juego (models.Model):
 		return self.nombre
 		
 	def get_absolute_url(self):
+<<<<<<< HEAD
 		return reverse('juego-detail', kwargs={'pk': self.pk})
+=======
+		return reverse('juego_edit', kwargs={'pk': self.pk})
+>>>>>>> 1ac5c16f0466e5997e3bdbe7ca1aa7793e3a9d05
 		
 class Comentario(models.Model):
 	comentario = models.CharField(max_length=50,primary_key=True)

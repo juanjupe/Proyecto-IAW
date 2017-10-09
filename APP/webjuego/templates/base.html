@@ -12,11 +12,28 @@
 
 {% block content %}
 
+<<<<<<< HEAD
 
 {% endblock %}
 
 </br>
 <a href="{% url "juego_create" %}">nuevo</a>
+=======
+<h1>Juegos</h1>
+<ul>
+    {% for juego in object_list %}
+    <li>{{ juego.nombre }}  :  
+    <a href="{% url "juego_edit" juego.nombre %}">{{ juego.nombre }}{{ juego.gmail }}</a>
+    <a href="{% url "juego_delete" juego.nombre %}">delete</a>
+    </li>
+    {% endfor %}
+</ul>
+
+<a href="{% url "juego_new" %}">New</a>
+
+
+{% endblock %}
+>>>>>>> 1ac5c16f0466e5997e3bdbe7ca1aa7793e3a9d05
 
 </body>
 

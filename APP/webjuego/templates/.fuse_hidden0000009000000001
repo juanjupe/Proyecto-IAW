@@ -3,19 +3,12 @@
 {% block content %}
 
 <h2>VIDEOJUEGOS</h2>
-<<<<<<< HEAD
 			{% for juego in object_list %}
 				
 	           <a href="{% url "juego_detalle" juego.id %}"> <li>{{ juego.nombre }}</li></a> 
 	           <a href="{% url "juego_update" juego.id %}">editar</a>
 	           <a href="{% url "juego_delete" juego.id %}">borrar</a>
 	           
-=======
-
-	        {% for juego in object_list %}
-	           <a href="juego_detalle/{{juego.id}}"> <li>{{ juego.nombre }}</li></a> 
-
->>>>>>> 1ac5c16f0466e5997e3bdbe7ca1aa7793e3a9d05
 	        {% endfor %}
 
 {% endblock %}
