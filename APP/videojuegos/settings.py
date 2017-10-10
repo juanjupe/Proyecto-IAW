@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'webjuego',
+    'django_extensions',
     'django.contrib.staticfiles',
 )
 
