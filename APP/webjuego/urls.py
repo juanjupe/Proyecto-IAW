@@ -1,14 +1,16 @@
-from django.conf.urls import url
+from django.conf.urls import  url
+
 from django.contrib import admin
 
 from webjuego import views
 from django.core.urlresolvers import reverse_lazy
-from webjuego.views import Juegolist,JuegoDetail,JuegoCreate,JuegoUpdate,JuegoDelete
+from webjuego.views import Juegolist,JuegoDetail,JuegoCreate,JuegoUpdate,JuegoDelete,NewUsuario
 
 urlpatterns = [
     # Examples:
     # url(r'^$', 'videojuegos.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
+	url(r'^usuario/nuevo$',views.NewUsuario,name='usuario_nuevo'),
 
     url(r'^admin/', admin.site.urls),
     url(r'^$', Juegolist.as_view(),name='juego_lista'),

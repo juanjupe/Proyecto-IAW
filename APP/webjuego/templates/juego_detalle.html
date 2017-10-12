@@ -3,10 +3,24 @@
 
 {% block content %}
 
-Nombre:{{juego.nombre}}<br>
-Genero:{{juego.genero.all}}<br>
-Creador:{{juego.creador}}<br>
-Plataforma:{{juego.plataforma.all}}<br>
+Nombre: {{juego.nombre}}<br>
+Genero: {{juego.genero.all}}<br>
+Creador: {{juego.creador}}<br>
+Plataforma: {{juego.plataforma.all}}<br>
 
 {% endblock %}
 
+<table>
+<tr>
+	<td>Nombre</td>
+	<td>Genero</td>
+	<td>Creador</td>
+	<td>Plataforma</td>
+</tr>
+<tr>
+	<td>{{juego.nombre}}</td>
+	<td>{{juego.genero.all}}</td>
+	<td>{{juego.creador}}</td>
+	<td>{{juego.plataforma.all}}</td>
+</tr>
+</table>

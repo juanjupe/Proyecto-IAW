@@ -13,6 +13,8 @@ r  = requests.get(url)
 data = r.text
 soup = BeautifulSoup(data, 'lxml')
 juegos = soup.find_all('span', itemprop="name")
+for juego in juegos:
+	print juego
 print juegos
 plataformas = soup.find_all('td' , itemprop="operatingSystem gamePlatform")
 print plataformas     
