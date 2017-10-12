@@ -6,7 +6,7 @@
 <h2>Ranking</h2>
 
 			{% for juego in object_list %}
-				<table width="630" heigth="630" border="2"  style="background: url(../imagen/fondo.jpg) no-repeat">
+				<table width="630" heigth="630" border="2"">
 					<td>{{ juego.nombre }}</td>
 		           <td><strong><a href="{% url "juego_detalle" juego.id %}">Detalles</a><strong> </td>
 		           <td><a href="{% url "juego_update" juego.id %}">Editar</a></td>

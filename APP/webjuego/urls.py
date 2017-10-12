@@ -11,6 +11,10 @@ urlpatterns = [
     # url(r'^$', 'videojuegos.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 	url(r'^usuario/nuevo$',views.NewUsuario,name='usuario_nuevo'),
+	url(r'^ingresar/$',views.Ingresar,name='ingresar'),
+	url(r'^privado/$',views.Privado,name='usuario_privado'),
+	url(r'^cerrar/$',views.Cerrar,name='cerrar_sesion'),
+
 
     url(r'^admin/', admin.site.urls),
     url(r'^$', Juegolist.as_view(),name='juego_lista'),

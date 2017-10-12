@@ -22,8 +22,36 @@ def NewUsuario(request):
 	else:
 		formulario=UserCreationForm()
 	return render(request,'nuevousuario.html',{'formulario':formulario})
-
-
+	
+@login_required(login_url='/ingresar')
+def Cerrar(request):
+	logout(request)
+	return 	HttpResponseRedirect('/')
+@login_required(login_url='/ingresar')
+def Privado (request):
+	usuario=request.user
+	return render(request,'privado.html',{'usuario':usuario})
+def Ingresar(request):
+	if not request.user.is_anonymous():
+		return HttpResponseRedirect('/privado')
+	if request.method == 'POST':
+		formulario = AuthenticationForm(request.POST)
+		if formulario.is_valid:
+			usuario=request.POST['username']
+			clave=request.POST['password']
+			acceso=authenticate(username=usuario,password=clave)
+			if acceso is not None:
+				if acceso.is_active:	
+					login(request,acceso)
+					return HttpResponseRedirect('/privado')
+				else:
+					return render('noactivo.html')
+			else:
+				return render('nousuario.html')
+	else:
+		formulario=UserCreationForm()
+	return render(request,'ingresar.html',{'formulario':formulario})
+	
 
 class Juegolist(ListView):
 	model = Juego

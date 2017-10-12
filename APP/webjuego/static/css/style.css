@@ -1,4 +1,4 @@
-body {background-color: white;}
+
 
 a {color: green;}
 
@@ -6,3 +6,13 @@ h1 ,h2 {color: black;
 font-family: Arial, Helvetica, sans-serif; }
 
 style {color: black;}
+
+body {
+    background-image: url("imagen/fondo.jpg");
+    background-size:cover; 
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-color: white;
+}
+
+
