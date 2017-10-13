@@ -1,18 +1,21 @@
 
 
-a {color: green;}
+a {color: red;}
 
-h1 ,h2 {color: black;
+h1 ,h2 {color: white;
 font-family: Arial, Helvetica, sans-serif; }
 
-style {color: black;}
+div,td{
+	color: white;
 
+}
 body {
-    background-image: url("imagen/fondo.jpg");
-    background-size:cover; 
+    background-image: url("imagen/g.jpg");
+	background-size:cover; 
     background-repeat:no-repeat;
     background-position:center center;
     background-color: white;
 }
+
 
 

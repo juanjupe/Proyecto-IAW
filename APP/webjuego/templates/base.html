@@ -9,6 +9,13 @@
 		{% endblock %}
 	</title>
 
+<button><a href="{% url "juego_create" %}">Crear Juego Nuevo</a></button>
+<button><a href="{% url "usuario_nuevo" %}">Crear una cuenta</a></button>
+<button><a text href="{% url "ingresar" %}">Iniciar sesion</a></button>
+<button ><a href="{% url "cerrar_sesion" %}">Desconectar</a></button>
+<button ><a href="{% url "juego_lista" %}">Inicio</a></button>
+
+
 </head>
 
 <body>
@@ -26,15 +33,14 @@
 </br>
 </br>
 </br>
-<a href="{% url "juego_create" %}">Crear Juego Nuevo</a>
 </br>
 </br>
-<a href="{% url "usuario_nuevo" %}">Registrar Usuario</a>
+
 </br>
 </br>
-<a href="{% url "ingresar" %}">Ingresar</a>
+
 </br>
 </br>
-<a href="{% url "cerrar_sesion" %}">Logout</a>
+
 
 </html>

@@ -1,14 +1,17 @@
 
 {% extends 'base.html' %}
-
 {% block content %}
 
-Nombre: {{juego.nombre}}<br>
-Genero: {{juego.genero.all}}<br>
-Creador: {{juego.creador}}<br>
-Plataforma: {{juego.plataforma.all}}<br>
-
+<h2>Detalles de {{juego.nombre}} </h2><br><br>
+<div>
+<strong>Nombre</strong>: {{juego.nombre}}<br>
+<strong>Genero</strong>: {{juego.genero.all}}<br>
+<strong>Creador</strong>: {{juego.creador}}<br>
+<strong>Plataforma</strong>: {{juego.plataforma.all}}<br>
+</div>
 {% endblock %}
+
+
 
 <table>
 <tr>
@@ -24,3 +27,4 @@ Plataforma: {{juego.plataforma.all}}<br>
 	<td>{{juego.plataforma.all}}</td>
 </tr>
 </table>
+

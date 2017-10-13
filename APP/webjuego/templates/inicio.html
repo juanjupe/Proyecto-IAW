@@ -4,9 +4,10 @@
 
 <h1 align="center">TOP VIDEOJUEGOS</h1>
 <h2>Ranking</h2>
-
+<div>
 			{% for juego in object_list %}
-				<table width="630" heigth="630" border="2"">
+			
+				<table  width="630" heigth="630" border="2" >
 					<td>{{ juego.nombre }}</td>
 		           <td><strong><a href="{% url "juego_detalle" juego.id %}">Detalles</a><strong> </td>
 		           <td><a href="{% url "juego_update" juego.id %}">Editar</a></td>
@@ -14,5 +15,5 @@
 	           </table>
 
 	        {% endfor %}
-
+</div>
 {% endblock %}

@@ -37,12 +37,12 @@ def Ingresar(request):
 	if request.method == 'POST':
 		formulario = AuthenticationForm(request.POST)
 		if formulario.is_valid:
-			usuario=request.POST['username']
-			clave=request.POST['password']
-			acceso=authenticate(username=usuario,password=clave)
-			if acceso is not None:
-				if acceso.is_active:	
-					login(request,acceso)
+			username = request.POST['username']
+			password = request.POST['password']
+			user = authenticate(username=username, password=password)
+			if user is not None:
+				if user.is_active:	
+					login(request,user)
 					return HttpResponseRedirect('/privado')
 				else:
 					return render('noactivo.html')
@@ -78,7 +78,7 @@ class JuegoCreate(CreateView):
 		
 class JuegoUpdate(UpdateView):
 	model=Juego
-	template_name = "juego_create.html"
+	template_name = "juego_update.html"
 	fields = ['nombre','genero','creador','plataforma']
 	success_url = reverse_lazy('juego_lista')
 	
