@@ -4,7 +4,8 @@ from webjuego.models import Juego ,Usuario
 
 from django.urls import reverse_lazy
 from django.views.generic.edit import FormView
-
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate, logout
@@ -39,7 +40,7 @@ def Ingresar(request):
 		if formulario.is_valid:
 			username = request.POST['username']
 			password = request.POST['password']
-			user = authenticate(username=username, password=password)
+			user = authenticate(password=password,username=username)
 			if user is not None:
 				if user.is_active:	
 					login(request,user)
@@ -49,7 +50,7 @@ def Ingresar(request):
 			else:
 				return render('nousuario.html')
 	else:
-		formulario=UserCreationForm()
+		formulario=AuthenticationForm()
 	return render(request,'ingresar.html',{'formulario':formulario})
 	
 
