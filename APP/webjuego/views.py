@@ -10,7 +10,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+
 from django.http.response import HttpResponseRedirect
 
 
@@ -28,10 +28,13 @@ def NewUsuario(request):
 def Cerrar(request):
 	logout(request)
 	return 	HttpResponseRedirect('/')
+	
 @login_required(login_url='/ingresar')
 def Privado (request):
 	usuario=request.user
 	return render(request,'privado.html',{'usuario':usuario})
+	
+	
 def Ingresar(request):
 	if not request.user.is_anonymous():
 		return HttpResponseRedirect('/privado')
@@ -46,9 +49,9 @@ def Ingresar(request):
 					login(request,user)
 					return HttpResponseRedirect('/privado')
 				else:
-					return render('noactivo.html')
+					return render(request,'noactivo.html')
 			else:
-				return render('nousuario.html')
+				return render(request,'nousuario.html')
 	else:
 		formulario=AuthenticationForm()
 	return render(request,'ingresar.html',{'formulario':formulario})
