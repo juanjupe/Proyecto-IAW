@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'webjuego',
     'django_extensions',
     'django.contrib.staticfiles',
+    
 )
 
 MIDDLEWARE_CLASSES = (

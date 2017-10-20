@@ -14,7 +14,7 @@
 <button><a text href="{% url "ingresar" %}">Iniciar sesion</a></button>
 <button ><a href="{% url "cerrar_sesion" %}">Desconectar</a></button>
 <button ><a href="{% url "juego_lista" %}">Inicio</a></button>
-
+<label>Bienvenido, {{request.user}}.</label>
 
 </head>
 

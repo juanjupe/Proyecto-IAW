@@ -3,20 +3,17 @@ from django.core.urlresolvers import reverse
 from django.db import models
 from django.contrib import admin
 from django.contrib.auth.models import User
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 
 # Create your models here.
 
 	
 class Usuario(models.Model):
 	user = models.OneToOneField(User,default=0)
-	avatar = models.ImageField(upload_to='user',default=0)
-
-	def __str__(self):
-		return self.nombre
+	avatar = models.ImageField()
 
 	
-	def get_absolute_url(self):
-		return reverse('usuario-detail', kwargs={'pk': self.pk})	
 	
 	
 class Genero (models.Model):
@@ -69,5 +66,7 @@ class Puntuacione(models.Model):
 
 
 
-
+@admin.register(Usuario)
+class UsuarioAdmin(admin.ModelAdmin):
+    pass
 	
