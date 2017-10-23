@@ -11,12 +11,13 @@ from django.db.models.signals import post_save
 	
 class Usuario(models.Model):
 	user = models.OneToOneField(User,on_delete=models.CASCADE,unique=True)
-	avatar = models.ImageField()
+	avatar = models.ImageField(null=True, blank=True)
 
 	def __str__(self):
 		return str(self.user)
 
-
+	def __str__(self):
+		return self.user.username
     
 class Genero (models.Model):
 	tipo = models.CharField(max_length=50)

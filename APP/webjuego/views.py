@@ -5,13 +5,13 @@ from django.urls import reverse_lazy
 from django.views.generic.edit import FormView
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm 
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.http.response import HttpResponseRedirect
 from django.views.generic import TemplateView
-
+from webjuego.forms import UserForm
 def NewUsuario(request):
 	if request.method == 'POST':
 		formulario = UserCreationForm(request.POST)  
@@ -103,15 +103,18 @@ class JuegoDelete(DeleteView):
 	def dispatch(self, *args, **kwargs):
 		return super(JuegoDelete, self).dispatch(*args, **kwargs)
 		
-class UsuarioNuevo(CreateView):
-	model = User
-#	form_class = SignupForm
-	fields = ['username', 'password', 'email', 'first_name', 'last_name']
-	success_url = reverse_lazy("juego_lista")
-	template_name = "nuevousuario.html"
-  
-#	def get_form(self, form_class):
-#		form = super(Signup, self).get_form(form_class)
-#		form.fields['password'].widget = forms.PasswordInput()
-#		return form
-		
+class UsuarioNuevo(FormView):
+    template_name = 'nuevousuario.html'
+    form_class = UserForm
+    success_url = reverse_lazy('juego_lista')
+ 
+    def form_valid(self, form):
+        user = form.save()
+        u = User.objects.get(username=str(user))
+        u.email = form.cleaned_data['email']
+        profile = Profiles()
+        profile.user = user
+        profile.url = form.cleaned_data['url']
+        profile.avatar = form.cleaned_data['avatar']
+        profile.save()
+        return super(SignIn, self).form_valid(form)

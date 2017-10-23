@@ -1,10 +1,12 @@
 from django.conf.urls import  url
 
 from django.contrib import admin
+from django.conf.urls.static import static
+from django.conf import settings
 
 from webjuego import views
 from django.core.urlresolvers import reverse_lazy
-from webjuego.views import Juegolist,JuegoDetail,JuegoCreate,JuegoUpdate,JuegoDelete,NewUsuario,UsuarioNuevo
+from webjuego.views import Juegolist,JuegoDetail,JuegoCreate,JuegoUpdate,JuegoDelete,UsuarioNuevo
 
 urlpatterns = [
     # Examples:
@@ -25,3 +27,6 @@ urlpatterns = [
 	url(r'^juego/update/(?P<pk>[0-9]+)/$', JuegoUpdate.as_view(), name='juego_update'),
 	url(r'^juego/delete/(?P<pk>[0-9]+)/$', JuegoDelete.as_view(), name='juego_delete'),
 ]
+if settings.DEBUG:
+	urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+	urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
