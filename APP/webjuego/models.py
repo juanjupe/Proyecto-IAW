@@ -10,12 +10,14 @@ from django.db.models.signals import post_save
 
 	
 class Usuario(models.Model):
-	user = models.OneToOneField(User,default=0)
+	user = models.OneToOneField(User,on_delete=models.CASCADE,unique=True)
 	avatar = models.ImageField()
 
-	
-	
-	
+	def __str__(self):
+		return str(self.user)
+
+
+    
 class Genero (models.Model):
 	tipo = models.CharField(max_length=50)
 	
@@ -66,7 +68,4 @@ class Puntuacione(models.Model):
 
 
 
-@admin.register(Usuario)
-class UsuarioAdmin(admin.ModelAdmin):
-    pass
-	
+

@@ -1,20 +1,16 @@
 from django.shortcuts import render
 from django.views.generic import ListView,DetailView,CreateView, UpdateView, DeleteView 
-
 from webjuego.models import Juego ,Usuario
-
 from django.urls import reverse_lazy
 from django.views.generic.edit import FormView
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.http.response import HttpResponseRedirect
 from django.views.generic import TemplateView
-
 
 def NewUsuario(request):
 	if request.method == 'POST':
@@ -106,4 +102,16 @@ class JuegoDelete(DeleteView):
 	@method_decorator(login_required)
 	def dispatch(self, *args, **kwargs):
 		return super(JuegoDelete, self).dispatch(*args, **kwargs)
+		
+class UsuarioNuevo(CreateView):
+	model = User
+#	form_class = SignupForm
+	fields = ['username', 'password', 'email', 'first_name', 'last_name']
+	success_url = reverse_lazy("juego_lista")
+	template_name = "nuevousuario.html"
+  
+#	def get_form(self, form_class):
+#		form = super(Signup, self).get_form(form_class)
+#		form.fields['password'].widget = forms.PasswordInput()
+#		return form
 		

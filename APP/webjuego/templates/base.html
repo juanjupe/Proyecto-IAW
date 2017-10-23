@@ -8,12 +8,24 @@
 
 		{% endblock %}
 	</title>
+{% if user.is_authenticated %}
+				<button><a href="{% url "juego_create" %}">Crear Juego Nuevo</a></button>
+				<button ><a href="{% url "cerrar_sesion" %}">Desconectar</a></button>
+				<button ><a href="{% url "juego_lista" %}">Inicio</a></button>
+				{% if is_staff %}
 
-<button><a href="{% url "juego_create" %}">Crear Juego Nuevo</a></button>
-<button><a href="{% url "usuario_nuevo" %}">Registrarse</a></button>
-<button><a text href="{% url "ingresar" %}">Iniciar sesion</a></button>
-<button ><a href="{% url "cerrar_sesion" %}">Desconectar</a></button>
-<button ><a href="{% url "juego_lista" %}">Inicio</a></button>
+				<button ><a href="{% url "admin" %}">Administracion</a></button>
+				{% endif %}
+				
+
+				{% else %}
+				<button><a href="{% url "usuario_nuevo" %}">Registrarse</a></button>
+				<button><a text href="{% url "ingresar" %}">Iniciar sesion</a></button>
+				<button ><a href="{% url "juego_lista" %}">Inicio</a></button>
+
+{% endif %}
+
+
 <label>Bienvenido, {{request.user}}.</label>
 
 </head>

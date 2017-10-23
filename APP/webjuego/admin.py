@@ -18,9 +18,9 @@ admin.site.register(User, UserAdmin)
 class UsuarioInline(admin.StackedInline):
   	model= Usuario
   	can_delete=False
-  	verbose_name_plurar='usuarios'
+  	verbose_name_plurar='usuario'
   	
-class CustomUserAdmin(UserAdmin):
+class UserAdmin(UserAdmin):
  	inlines=(UsuarioInline,)
 	def get_inline_instances(self, request, obj=None):
 		if not obj:
