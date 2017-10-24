@@ -114,4 +114,4 @@ class SignIn(FormView):
 		self.object = form.save(commit=False)
 		self.object.user = self.request.user
 		self.object.save()
-		return super(RegisterForm, self).form_valid(form)
+		return HttpResponseRedirect(self.get_success_url())
