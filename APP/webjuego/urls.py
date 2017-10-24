@@ -6,14 +6,14 @@ from django.conf import settings
 
 from webjuego import views
 from django.core.urlresolvers import reverse_lazy
-from webjuego.views import Juegolist,JuegoDetail,JuegoCreate,JuegoUpdate,JuegoDelete,UsuarioNuevo
+from webjuego.views import Juegolist,JuegoDetail,JuegoCreate,JuegoUpdate,JuegoDelete,SignIn
 
 urlpatterns = [
     # Examples:
     # url(r'^$', 'videojuegos.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 #	url(r'^usuario/nuevo$',views.NewUsuario,name='usuario_nuevo'),
-	url(r'^usuario/nuevo$',UsuarioNuevo.as_view(),name='usuario_nuevo'),
+	url(r'^usuario/nuevo$',SignIn.as_view(),name='usuario_nuevo'),
 
 	url(r'^ingresar/$',views.Ingresar,name='ingresar'),
 	url(r'^privado/$',views.Privado,name='usuario_privado'),

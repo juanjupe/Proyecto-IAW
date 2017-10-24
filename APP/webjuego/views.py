@@ -11,7 +11,9 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.http.response import HttpResponseRedirect
 from django.views.generic import TemplateView
-from webjuego.forms import UserForm
+from webjuego.forms import RegisterForm
+
+
 def NewUsuario(request):
 	if request.method == 'POST':
 		formulario = UserCreationForm(request.POST)  
@@ -103,18 +105,13 @@ class JuegoDelete(DeleteView):
 	def dispatch(self, *args, **kwargs):
 		return super(JuegoDelete, self).dispatch(*args, **kwargs)
 		
-class UsuarioNuevo(FormView):
-    template_name = 'nuevousuario.html'
-    form_class = UserForm
-    success_url = reverse_lazy('juego_lista')
- 
-    def form_valid(self, form):
-        user = form.save()
-        u = User.objects.get(username=str(user))
-        u.email = form.cleaned_data['email']
-        profile = Profiles()
-        profile.user = user
-        profile.url = form.cleaned_data['url']
-        profile.avatar = form.cleaned_data['avatar']
-        profile.save()
-        return super(SignIn, self).form_valid(form)
+class SignIn(FormView):
+	template_name = 'nuevousuario.html'
+	form_class = RegisterForm
+	success_url = reverse_lazy('juego_lista')
+
+	def form_valid(self, form):
+		self.object = form.save(commit=False)
+		self.object.user = self.request.user
+		self.object.save()
+		return super(RegisterForm, self).form_valid(form)
