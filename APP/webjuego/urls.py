@@ -20,13 +20,11 @@ urlpatterns = [
 	url(r'^cerrar/$',views.Cerrar,name='cerrar_sesion'),
 
 
-    url(r'^admin/', admin.site.urls),
+    url(r'^admin/', admin.site.urls,name='administracion'),
     url(r'^$', Juegolist.as_view(),name='juego_lista'),
     url(r'^juego_detalle/(?P<pk>[0-9]+)/$', JuegoDetail.as_view(), name='juego_detalle'),
 	url(r'^juego/create/$', JuegoCreate.as_view(), name='juego_create'),
 	url(r'^juego/update/(?P<pk>[0-9]+)/$', JuegoUpdate.as_view(), name='juego_update'),
 	url(r'^juego/delete/(?P<pk>[0-9]+)/$', JuegoDelete.as_view(), name='juego_delete'),
-]
-if settings.DEBUG:
-	urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-	urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
