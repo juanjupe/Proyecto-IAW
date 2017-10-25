@@ -106,9 +106,7 @@ STATIC_URL = '/static/'
 # Redirect when login is correct.
 LOGIN_REDIRECT_URL = "/home"
 # Redirect when login is not correct.
-STATICFILES_DIRS=[
-	os.path.join(BASE_DIR,"static"),
-]
+
 LOGIN_URL = '/'
 MEDIA_URL = "/APP/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR,"media")

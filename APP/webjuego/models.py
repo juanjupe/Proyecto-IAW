@@ -12,7 +12,6 @@ from django.db.models.signals import post_save
 class Usuario(models.Model):
 	user = models.OneToOneField(User,on_delete=models.CASCADE,unique=True)
 	avatar = models.ImageField(upload_to='fotos',null=True ,blank=True)
-
 	def __str__(self):
 		return str(self.user)
 

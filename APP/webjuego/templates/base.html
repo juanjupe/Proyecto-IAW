@@ -1,14 +1,23 @@
 {% load staticfiles %}
-<html>
+<!doctype html>
+<html lang="es">
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+	
+		 <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
 	<meta charset="utf-8">
 	<title>
 		{% block head_title %}
 
 		{% endblock %}
 	</title>
-{% if user.is_authenticated %}
+	
+		{% if user.is_authenticated %}
+
 				<button><a href="{% url "juego_create" %}">Crear Juego Nuevo</a></button>
 				<button ><a href="{% url "cerrar_sesion" %}">Desconectar</a></button>
 				<button ><a href="{% url "juego_lista" %}">Inicio</a></button>
@@ -22,21 +31,21 @@
 				<button><a href="{% url "usuario_nuevo" %}">Registrarse</a></button>
 				<button><a text href="{% url "ingresar" %}">Iniciar sesion</a></button>
 				<button ><a href="{% url "juego_lista" %}">Inicio</a></button>
+			
+		{% endif %}
 
-{% endif %}
 
-
-<label>Bienvenido, {{request.user}}.</label>
-
+		<label>Bienvenido, {{request.user}}.</label>
+	
 </head>
 
 <body>
-
+<div class="contenido">
 {% block content %}
 
 
 {% endblock %}
-
+</div>
 
 </body>
 </br>
