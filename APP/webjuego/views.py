@@ -115,3 +115,10 @@ class SignIn(FormView):
 		self.object.user = self.request.user
 		self.object.save()
 		return HttpResponseRedirect(self.get_success_url())
+	def form_valid(self, form):
+		user=form.save()
+		usuario=Usuario()
+		usuario.user=user
+		usuario.avatar=form.cleaned_data['avatar']
+		usuario.save()
+		return super(SignIn, self).form_valid(form)
