@@ -20,3 +20,11 @@ for juego in juegos :
 
 for plataforma in plataformas:
 	print (str(plataforma)[44:-5])
+
+cont=0
+
+for juego in juegos :
+	pla=str(plataformas[0])[44:-5]
+	print (str(juego)[22:-7])  
+	print pla  
+	cont=cont+1

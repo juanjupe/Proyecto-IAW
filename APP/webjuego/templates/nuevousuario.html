@@ -1,11 +1,17 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+
 {% block content %}
-<img src="{{ products.fotos.url }}"/>
+
+	
+
 	<form id='formulario' method='post' action="" enctype="multipart/form-data" >{% csrf_token %}
 		<table>{{ form }}</table>
 		<p><input type='submit' value='Registrar'/</p>
 
 	</form>
+
+
+
 
 {% endblock %}

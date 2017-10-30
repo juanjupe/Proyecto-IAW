@@ -24,5 +24,12 @@ font-family: 'Lobster';
 font-size: 25px;
 }
 
+.nuevo {
+    background-image: url("imagen/h.jpg");
+	background-size:cover; 
+-moz-background-size: cover;
+        -webkit-background-size: cover;
+        -o-background-size: cover;
 
+}
 
