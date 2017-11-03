@@ -12,6 +12,8 @@
 		           <td><strong><a href="{% url "juego_detalle" juego.id %}">Detalles</a><strong> </td>
 		           <td><a href="{% url "juego_update" juego.id %}">Editar</a></td>
 		           <td><a href="{% url "juego_delete" juego.id %}">Borrar</a></td>
+		           <td><a href="{% url 'comentario_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a></td>
+
 	           </table>
 	           	{% else %}
 				<table  width="630" heigth="630" border="2" >

@@ -12,6 +12,12 @@ from django.utils.decorators import method_decorator
 from django.http.response import HttpResponseRedirect
 from django.views.generic import TemplateView
 from webjuego.forms import RegisterForm
+from .forms import ComentarioForm
+def comentario_new(request):
+	form = ComentarioForm()
+	return render(request, 'comentario_edit.html', {'form': form})
+
+
 
 
 def NewUsuario(request):
