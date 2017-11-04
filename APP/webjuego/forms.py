@@ -12,10 +12,7 @@ class RegisterForm(UserCreationForm):
 		fields = ("username", "first_name", "last_name", "email",'avatar')
 
 
-
-
-
 class ComentarioForm(forms.ModelForm):
 	class Meta:
 		model = Comentario
-		fields = ('comentario','juego')
+		fields = ("comentario",)

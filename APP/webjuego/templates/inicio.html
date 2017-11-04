@@ -9,10 +9,10 @@
 				{% if user.is_authenticated %}
 				<table  width="630" heigth="630" border="2" >
 					<td>{{ juego.nombre }}</td>
-		           <td><strong><a href="{% url "juego_detalle" juego.id %}">Detalles</a><strong> </td>
-		           <td><a href="{% url "juego_update" juego.id %}">Editar</a></td>
-		           <td><a href="{% url "juego_delete" juego.id %}">Borrar</a></td>
-		           <td><a href="{% url 'comentario_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a></td>
+		           <td><button ><strong><a href="{% url "juego_detalle" juego.id %}">Detalles</a><strong></button> </td>
+		           <td><button ><a href="{% url "juego_update" juego.id %}">Editar</a></button></td>
+		           <td><button ><a href="{% url "juego_delete" juego.id %}">Borrar</a></button></td>
+		          <td> <button ><a href="{% url "comenta" %}">Comenta</a></button></td>
 
 	           </table>
 	           	{% else %}

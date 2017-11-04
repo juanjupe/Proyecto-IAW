@@ -58,7 +58,8 @@ class Comentario(models.Model):
 	comentario = models.CharField(max_length=50,primary_key=True)
 	usuario=models.ManyToManyField(Usuario,default=0)
 	juego=models.ForeignKey(Juego,default=0)
-	
+	def __str__(self):
+		return self.comentario	
 	
 	
 class Puntuacione(models.Model):

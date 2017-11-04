@@ -13,12 +13,17 @@ from django.http.response import HttpResponseRedirect
 from django.views.generic import TemplateView
 from webjuego.forms import RegisterForm
 from .forms import ComentarioForm
-def comentario_new(request):
-	form = ComentarioForm()
-	return render(request, 'comentario_edit.html', {'form': form})
+from django.shortcuts import redirect
 
-
-
+def nuevo_comentario(request):
+	if request.method=='POST':
+		formulario = ComentarioForm(request.POST)
+		if formulario.is_valid():
+			formulario.save()
+			return HttpResponseRedirect('/')
+	else:
+		formulario=ComentarioForm()	
+	return render(request,'comentarioform.html',{'formulario':formulario})
 
 def NewUsuario(request):
 	if request.method == 'POST':

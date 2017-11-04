@@ -6,7 +6,7 @@ from django.conf import settings
 
 from webjuego import views
 from django.core.urlresolvers import reverse_lazy
-from webjuego.views import Juegolist,JuegoDetail,JuegoCreate,JuegoUpdate,JuegoDelete,SignIn
+from webjuego.views import Juegolist,JuegoDetail,JuegoCreate,JuegoUpdate,JuegoDelete,SignIn,nuevo_comentario
 
 urlpatterns = [
     # Examples:
@@ -14,7 +14,9 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
 #	url(r'^usuario/nuevo$',views.NewUsuario,name='usuario_nuevo'),
 	url(r'^usuario/nuevo$',SignIn.as_view(),name='usuario_nuevo'),
-	url(r'^comentario/new/$', views.comentario_new, name='comentario_new'),
+
+	url(r'^comenta/$',views.nuevo_comentario,name='comenta'),
+
 	url(r'^ingresar/$',views.Ingresar,name='ingresar'),
 	url(r'^privado/$',views.Privado,name='usuario_privado'),
 	url(r'^cerrar/$',views.Cerrar,name='cerrar_sesion'),
