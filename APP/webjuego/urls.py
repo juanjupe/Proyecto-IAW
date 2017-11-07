@@ -22,7 +22,7 @@ urlpatterns = [
 	url(r'^cerrar/$',views.Cerrar,name='cerrar_sesion'),
 
 
-    url(r'^admin/', admin.site.urls,name='administracion'),
+#    url(r'^admin/', admin.site.urls,name='administracion'),
     url(r'^$', Juegolist.as_view(),name='juego_lista'),
     url(r'^juego_detalle/(?P<pk>[0-9]+)/$', JuegoDetail.as_view(), name='juego_detalle'),
 	url(r'^juego/create/$', JuegoCreate.as_view(), name='juego_create'),

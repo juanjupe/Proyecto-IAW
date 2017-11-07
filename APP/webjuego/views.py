@@ -25,15 +25,7 @@ def nuevo_comentario(request):
 		formulario=ComentarioForm()	
 	return render(request,'comentarioform.html',{'formulario':formulario})
 
-def NewUsuario(request):
-	if request.method == 'POST':
-		formulario = UserCreationForm(request.POST)  
-		if formulario.is_valid():
-			formulario.save()
-			return HttpResponseRedirect('/')
-	else:
-		formulario=UserCreationForm()
-	return render(request,'nuevousuario.html',{'formulario':formulario})
+
 	
 @login_required(login_url='/ingresar')
 def Cerrar(request):

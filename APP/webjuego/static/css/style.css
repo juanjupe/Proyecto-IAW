@@ -11,11 +11,8 @@ h1 ,h2 { color:white;
 
 
 body {
-    background-image: url("imagen/ooo.jpg");
-	background-size:cover; 
-    background-repeat:no-repeat;
-    background-position:center center;
-
+    background: white url("imagen/si.png") no-repeat bottom right fixed;
+}
 
 }
 .contenido {

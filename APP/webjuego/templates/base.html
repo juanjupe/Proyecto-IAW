@@ -3,12 +3,12 @@
 <html lang="es">
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+ 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
 	
-		 <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-
+  <!-- Custom styles for this template -->
+<link href="navbar-top.css" rel="stylesheet">
 
 	<meta charset="utf-8">
 	<title>
@@ -17,7 +17,21 @@
 		{% endblock %}
 	</title>
 	
-		{% if user.is_authenticated %}
+
+	
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+      <img src="/static/css/imagen/ooo.jpg" width=3% height=3%>
+      <a class="navbar-brand" href="index"><font color=#FFFFFF>Top Videojuegos</font></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+           		{% if user.is_authenticated %}
 
 				<button><a href="{% url "juego_create" %}">Crear Juego Nuevo</a></button>
 				<button ><a href="{% url "cerrar_sesion" %}">Desconectar</a></button>
@@ -36,11 +50,22 @@
 
 
 		<label>Bienvenido, {{request.user}}.</label>
-	
-</head>
-
-<body>
-<div class="contenido">
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item" text-align="right">
+            <a class="nav-link">
+              <img src="/static/foto.jpeg" width=12% height=12%>
+              <font color=#FFFFFF>{% block user %} {% endblock %}</font>
+            </a>
+          </li>
+        </ul>
+        <!-- <form class="form-inline mt-2 mt-md-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Buscar">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+        </form> -->
+      </div>
+</nav>
 {% block content %}
 
 
