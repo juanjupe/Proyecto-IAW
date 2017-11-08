@@ -33,20 +33,21 @@
           <li class="nav-item">
            		{% if user.is_authenticated %}
 
-				<button><a href="{% url "juego_create" %}">Crear Juego Nuevo</a></button>
-				<button ><a href="{% url "cerrar_sesion" %}">Desconectar</a></button>
-				<button ><a href="{% url "juego_lista" %}">Inicio</a></button>
-				{% if request.user.is_staff %}
-				<button><a href="{% url "usuario_nuevo" %}">Crear nuevo usuario</a></button>
+      				<button><a href="{% url "juego_create" %}">Crear Juego Nuevo</a></button>
+      				<button ><a href="{% url "cerrar_sesion" %}">Desconectar</a></button>
+      				<button ><a href="{% url "juego_lista" %}">Inicio</a></button>
+      				{% if request.user.is_staff %}
+      				<button><a href="{% url "usuario_nuevo" %}">Crear nuevo usuario</a></button>
+              <button><a href="{% url "api" %}">Api</a></button>
 
-   				{% endif %}
+         				{% endif %}
 
-				{% else %}
-				<button><a href="{% url "usuario_nuevo" %}">Registrarse</a></button>
-				<button><a text href="{% url "ingresar" %}">Iniciar sesion</a></button>
-				<button ><a href="{% url "juego_lista" %}">Inicio</a></button>
-			
-		{% endif %}
+      				{% else %}
+      				<button><a href="{% url "usuario_nuevo" %}">Registrarse</a></button>
+      				<button><a text href="{% url "ingresar" %}">Iniciar sesion</a></button>
+      				<button ><a href="{% url "juego_lista" %}">Inicio</a></button>
+      			
+      		    {% endif %}
 
 
 		<label>Bienvenido, {{request.user}}.</label>

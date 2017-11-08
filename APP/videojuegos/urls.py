@@ -6,6 +6,7 @@ from django.conf import settings
 urlpatterns = [
 	url(r'^admin/', admin.site.urls),
     url(r'', include('webjuego.urls')) , 
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
 
 ]

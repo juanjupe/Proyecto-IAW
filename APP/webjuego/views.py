@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView,DetailView,CreateView, UpdateView, DeleteView 
-from webjuego.models import Juego ,Usuario
+
 from django.urls import reverse_lazy
 from django.views.generic.edit import FormView
 from django.contrib.auth.models import User
@@ -14,6 +14,19 @@ from django.views.generic import TemplateView
 from webjuego.forms import RegisterForm
 from .forms import ComentarioForm
 from django.shortcuts import redirect
+
+from webjuego.serializers import JuegoSerializer
+from webjuego.models import Juego ,Usuario
+from rest_framework import generics
+
+class JuegosList(generics.ListCreateAPIView):
+    queryset = Juego.objects.all()
+    serializer_class = JuegoSerializer
+
+
+
+
+
 
 def nuevo_comentario(request):
 	if request.method=='POST':

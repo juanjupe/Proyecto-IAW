@@ -14,13 +14,13 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
 #	url(r'^usuario/nuevo$',views.NewUsuario,name='usuario_nuevo'),
 	url(r'^usuario/nuevo$',SignIn.as_view(),name='usuario_nuevo'),
-
 	url(r'^comenta/$',views.nuevo_comentario,name='comenta'),
 
 	url(r'^ingresar/$',views.Ingresar,name='ingresar'),
 	url(r'^privado/$',views.Privado,name='usuario_privado'),
 	url(r'^cerrar/$',views.Cerrar,name='cerrar_sesion'),
 
+    url(r'^api/$', views.JuegosList.as_view(),name='api'),
 
 #    url(r'^admin/', admin.site.urls,name='administracion'),
     url(r'^$', Juegolist.as_view(),name='juego_lista'),
