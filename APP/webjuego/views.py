@@ -16,7 +16,7 @@ from .forms import ComentarioForm
 from django.shortcuts import redirect
 
 from webjuego.serializers import JuegoSerializer
-from webjuego.models import Juego ,Usuario
+from webjuego.models import Juego ,Usuario , Comentario,User
 from rest_framework import generics
 
 class JuegosList(generics.ListCreateAPIView):
@@ -24,19 +24,23 @@ class JuegosList(generics.ListCreateAPIView):
     serializer_class = JuegoSerializer
 
 
+class ComentarioForm(FormView):
+	template_name = 'comentarioform.html'
+	form_class = ComentarioForm
+	success_url = reverse_lazy('juego_lista')
+	
+	def form_valid(self, form):
+		user=form.save()
+		usuario=Usuario()
+		user.usuario.save()
+		return super(ComentarioForm, self).form_valid(form)
+		
+	def form_valid(self, form):
+		self.object = form.save(commit=False)
+		self.object.comenteraio=form.cleaned_data['comentario']
+		self.object.save()
+		return HttpResponseRedirect(self.get_success_url())
 
-
-
-
-def nuevo_comentario(request):
-	if request.method=='POST':
-		formulario = ComentarioForm(request.POST)
-		if formulario.is_valid():
-			formulario.save()
-			return HttpResponseRedirect('/')
-	else:
-		formulario=ComentarioForm()	
-	return render(request,'comentarioform.html',{'formulario':formulario})
 
 
 	
@@ -50,6 +54,7 @@ def Privado (request):
 	usuario=request.user
 	return render(request,'privado.html',{'usuario':usuario})
 	
+from django.contrib import messages
 	
 def Ingresar(request):
 	if not request.user.is_anonymous():
@@ -65,8 +70,12 @@ def Ingresar(request):
 					login(request,user)
 					return HttpResponseRedirect('/privado')
 				else:
+					
 					return render(request,'noactivo.html')
 			else:
+				storage = messages.get_messages(request)
+				storage.used=True
+				messages.add_message(request, messages.INFO, "El usuario "+str(username)+" no existe.")				
 				return render(request,'nousuario.html')
 	else:
 		formulario=AuthenticationForm()

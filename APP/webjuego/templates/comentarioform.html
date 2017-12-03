@@ -3,7 +3,7 @@
 {% block content %}
 
 	<form id='formulario' method='post' action="">{% csrf_token%}
-	{{formulario.as_p}}
+	{{form}}
 	<p><input type="submit" value='Confirmar'/></p>
 	</form>
 {% endblock %}

@@ -13,6 +13,7 @@ class RegisterForm(UserCreationForm):
 
 
 class ComentarioForm(forms.ModelForm):
+	comentario = forms.CharField(label = 'comentario')
 	class Meta:
 		model = Comentario
-		fields = ("comentario",)
+		fields = ('comentario',)

@@ -5,4 +5,9 @@
 {% endblock %}
 {% block content %}
 	<p>El usuario o la contraseña no coinciden o no esxite</p>
+	{% if messages %}
+	{% for message in messages %}
+		<script>alert('{{message}}');</script>
+	{% endfor %}
+{% endif %}
 {% endblock %}
