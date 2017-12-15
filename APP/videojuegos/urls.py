@@ -3,9 +3,13 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
 
+from django.views.generic import RedirectView
+
+
 urlpatterns = [
 	url(r'^admin/', admin.site.urls,name='administracion'),
-    url(r'', include('webjuego.urls')) , 
+    url(r'TJ/', include('webjuego.urls')) , 
+	url(r'^$',RedirectView.as_view(url='/TJ/juego_lista')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
 

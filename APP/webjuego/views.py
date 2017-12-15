@@ -19,6 +19,17 @@ from webjuego.serializers import JuegoSerializer
 from webjuego.models import Juego ,Usuario , Comentario,User
 from rest_framework import generics
 
+
+def index(request):
+	if request.user.is_authenticated and request.user != "AnonymousUser":
+		queryset = Asignada.objects.all()
+		table = Asignada_Table(queryset)
+		django_tables2.RequestConfig(request).configure(table)
+		return render(request, "inicio.html")
+	else:
+		return render(request, "inicio.html")
+
+
 class JuegosList(generics.ListCreateAPIView):
     queryset = Juego.objects.all()
     serializer_class = JuegoSerializer
