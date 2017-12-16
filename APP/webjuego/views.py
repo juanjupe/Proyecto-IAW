@@ -69,7 +69,7 @@ from django.contrib import messages
 	
 def Ingresar(request):
 	if not request.user.is_anonymous():
-		return HttpResponseRedirect('/privado')
+		return HttpResponseRedirect('privado')
 	if request.method == 'POST':
 		formulario = AuthenticationForm(request.POST)
 		if formulario.is_valid:
@@ -79,7 +79,7 @@ def Ingresar(request):
 			if user is not None:
 				if user.is_active:	
 					login(request,user)
-					return HttpResponseRedirect('/privado')
+					return HttpResponseRedirect('/TJ/privado')
 				else:
 					
 					return render(request,'noactivo.html')
