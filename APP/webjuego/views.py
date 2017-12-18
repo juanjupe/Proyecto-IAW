@@ -22,12 +22,10 @@ from rest_framework import generics
 
 def index(request):
 	if request.user.is_authenticated and request.user != "AnonymousUser":
-		queryset = Asignada.objects.all()
-		table = Asignada_Table(queryset)
-		django_tables2.RequestConfig(request).configure(table)
-		return render(request, "inicio.html")
+
+		return render(request, "info.html")
 	else:
-		return render(request, "inicio.html")
+		return render(request, "info.html")
 
 
 class JuegosList(generics.ListCreateAPIView):
@@ -41,9 +39,9 @@ class ComentarioForm(FormView):
 	success_url = reverse_lazy('juego_lista')
 	
 	def form_valid(self, form):
-		user=form.save()
-		usuario=Usuario()
-		user.usuario.save()
+		user=form.save.unicode()
+		usuario=Usuario.unicode()
+		user.usuario.save.unicode()
 		return super(ComentarioForm, self).form_valid(form)
 		
 	def form_valid(self, form):
