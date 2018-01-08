@@ -18,7 +18,20 @@ from django.shortcuts import redirect
 from webjuego.serializers import JuegoSerializer
 from webjuego.models import Juego ,Usuario , Comentario,User
 from rest_framework import generics
+from django.http import HttpResponse
 
+
+#XSS on DJANGO
+'''
+def hello(request):
+	id=request.GET.get('id','')
+	return HttpResponse ("HELLO %s" % id)
+'''
+#ANTI-XSS
+
+def hello(request):
+	id=request.GET.get('id','')
+	return render (request , 'antixss.html' , {'id': id})
 
 def index(request):
 	if request.user.is_authenticated and request.user != "AnonymousUser":
@@ -33,20 +46,16 @@ class JuegosList(generics.ListCreateAPIView):
     serializer_class = JuegoSerializer
 
 
-class ComentarioForm(FormView):
-	template_name = 'comentarioform.html'
-	form_class = ComentarioForm
+class ComentarioForm(CreateView):
+	model=Comentario
+	template_name = "comentarioform.html"
+	fields = ['comentario']	
 	success_url = reverse_lazy('juego_lista')
-	
-	def form_valid(self, form):
-		user=form.save.unicode()
-		usuario=Usuario.unicode()
-		user.usuario.save.unicode()
-		return super(ComentarioForm, self).form_valid(form)
 		
 	def form_valid(self, form):
 		self.object = form.save(commit=False)
-		self.object.comenteraio=form.cleaned_data['comentario']
+		self.object.user = self.request.user.id
+		self.object.comentario=form.cleaned_data['comentario']
 		self.object.save()
 		return HttpResponseRedirect(self.get_success_url())
 

@@ -9,13 +9,18 @@ from django.views.generic import RedirectView
 
 from webjuego import views
 from django.core.urlresolvers import reverse_lazy
-from webjuego.views import Juegolist,JuegoDetail,JuegoCreate,JuegoUpdate,JuegoDelete,SignIn,ComentarioForm
+from webjuego.views import Juegolist,JuegoDetail,JuegoCreate,JuegoUpdate,JuegoDelete,SignIn,ComentarioForm,hello
 
 urlpatterns = [
     # Examples:
     # url(r'^$', 'videojuegos.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 #	url(r'^usuario/nuevo$',views.NewUsuario,name='usuario_nuevo'),
+
+	url(r'^hello/$',views.hello,name='hello'),
+
+
+
 	url(r'^usuario/nuevo$',SignIn.as_view(),name='usuario_nuevo'),
 	url(r'^comenta/$',ComentarioForm.as_view(),name='comenta'),
 
