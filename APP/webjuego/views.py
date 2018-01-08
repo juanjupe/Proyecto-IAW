@@ -19,20 +19,15 @@ from webjuego.serializers import JuegoSerializer
 from webjuego.models import Juego ,Usuario , Comentario,User
 from rest_framework import generics
 from django.http import HttpResponse
+from django.shortcuts import render_to_response
 
 
-#XSS on DJANGO
-'''
-def hello(request):
-	id=request.GET.get('id','')
-	return HttpResponse ("HELLO %s" % id)
-'''
 #ANTI-XSS
-
 def hello(request):
-	id=request.GET.get('id','')
-	return render (request , 'antixss.html' , {'id': id})
-
+    name = request.GET.get('name', 'world')
+    return render_to_response("antixss.html", {"name" : name})
+    
+    
 def index(request):
 	if request.user.is_authenticated and request.user != "AnonymousUser":
 
