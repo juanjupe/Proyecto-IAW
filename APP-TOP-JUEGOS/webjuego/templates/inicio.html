@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 align="center">TOP VIDEOJUEGOS</h1>
+<h2>Ranking</h2>
+<div class="cont">
+			{% for juego in object_list %}
+				{% if user.is_authenticated %}
+				<table  width="630" heigth="630" border="2" >
+					<td>{{ juego.nombre }}</td>
+		           <td><button ><strong><a href="{% url "juego_detalle" juego.id %}">Detalles</a><strong></button> </td>
+		           <td><button ><a href="{% url "juego_update" juego.id %}">Editar</a></button></td>
+		           <td><button ><a href="{% url "juego_delete" juego.id %}">Borrar</a></button></td>
+		          <td> <button ><a href="{% url "comenta" %}">Comenta</a></button></td>
+
+	           </table>
+	           	{% else %}
+				<table  width="630" heigth="630" border="2" >
+					<td>{{ juego.nombre }}</td>
+		           <td><strong><a href="{% url "juego_detalle" juego.id %}">Detalles</a><strong> </td>
+
+	           </table>	           	
+	           	{% endif %}
+	        {% endfor %}
+</div>
+{% endblock %}

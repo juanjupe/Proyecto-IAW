@@ -1,0 +1,32 @@
+a{
+color: black;
+font-family: 'Lobster';
+}
+
+
+h1 ,h2 { color:white;
+        font-family: 'Lobster'; 
+        font-size: 40px;
+        }
+
+
+body {
+    background: white url("imagen/si.png") no-repeat bottom right fixed;
+}
+
+}
+.contenido {
+color: #FCA205;
+font-family: 'Lobster';
+font-size: 25px;
+}
+
+.nuevo {
+    background-image: url("imagen/h.jpg");
+	background-size:cover; 
+-moz-background-size: cover;
+        -webkit-background-size: cover;
+        -o-background-size: cover;
+
+}
+
